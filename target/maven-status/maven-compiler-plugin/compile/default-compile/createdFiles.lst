@@ -1,1 +1,5 @@
-App.class
+com\manas\App.class
+com\manas\FaceShapeClassifier.class
+com\manas\CameraTest.class
+com\manas\LandmarkDetector.class
+com\manas\HairStyleRecomender.class
