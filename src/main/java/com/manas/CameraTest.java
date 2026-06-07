@@ -1,20 +1,21 @@
 package com.manas;
 
-import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
 import org.opencv.videoio.VideoCapture;
+
+import nu.pattern.OpenCV;
 
 public class CameraTest {
 
     public static void main(String[] args) {
 
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        OpenCV.loadLocally();
 
         VideoCapture camera = new VideoCapture(0);
 
         if (!camera.isOpened()) {
-            System.out.println("Cannot open camera");
+            System.out.println("Cannot open webcam");
             return;
         }
 
@@ -24,7 +25,11 @@ public class CameraTest {
 
             camera.read(frame);
 
-            HighGui.imshow("Camera", frame);
+            if (frame.empty()) {
+                continue;
+            }
+
+            HighGui.imshow("Webcam", frame);
 
             if (HighGui.waitKey(1) == 27) {
                 break;
