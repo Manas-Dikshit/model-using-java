@@ -1,5 +1,11 @@
+com\manas\FaceLandmark.class
+com\manas\FaceShape.class
+com\manas\HairstyleRecommender.class
+com\manas\CameraTest.class
+com\manas\HairstyleRecommender$1.class
+com\manas\OnnxTest.class
 com\manas\App.class
 com\manas\FaceShapeClassifier.class
-com\manas\CameraTest.class
+com\manas\FaceDetector.class
 com\manas\LandmarkDetector.class
-com\manas\HairStyleRecomender.class
+com\manas\ModelInspector.class

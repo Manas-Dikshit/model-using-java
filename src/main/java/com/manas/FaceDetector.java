@@ -15,7 +15,7 @@ public class FaceDetector {
 
         if (classifier.empty()) {
             throw new RuntimeException(
-                "Failed to load cascade: " + cascadePath);
+                    "Cannot load cascade: " + cascadePath);
         }
     }
 

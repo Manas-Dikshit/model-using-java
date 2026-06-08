@@ -1,5 +1,10 @@
 C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\App.java
 C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\CameraTest.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\FaceDetector.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\FaceLandmark.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\FaceShape.java
 C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\FaceShapeClassifier.java
-C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\HairStyleRecomender.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\HairstyleRecommender.java
 C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\LandmarkDetector.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\ModelInspector.java
+C:\Users\manas\Downloads\java-model-using\src\main\java\com\manas\OnnxTest.java
