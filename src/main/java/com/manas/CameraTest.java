@@ -19,18 +19,22 @@ public class CameraTest {
 
         OpenCV.loadLocally();
 
-        FaceDetector detector = new FaceDetector(
-                "models/haarcascade_frontalface_default.xml");
+        FaceDetector detector =
+                new FaceDetector(
+                        "models/haarcascade_frontalface_default.xml");
 
-        LandmarkDetector landmarkDetector = new LandmarkDetector(
-                "models/2d106det.onnx");
+        LandmarkDetector landmarkDetector =
+                new LandmarkDetector(
+                        "models/2d106det.onnx");
 
-        VideoCapture camera = new VideoCapture(0);
+        VideoCapture camera =
+                new VideoCapture(0);
 
         if (!camera.isOpened()) {
 
             System.out.println(
                     "Cannot open webcam");
+
             return;
         }
 
@@ -40,10 +44,12 @@ public class CameraTest {
 
             camera.read(frame);
 
-            Rect[] faces = detector.detect(frame);
+            Rect[] faces =
+                    detector.detect(frame);
 
             for (Rect face : faces) {
 
+                // Face rectangle
                 Imgproc.rectangle(
                         frame,
                         new Point(face.x, face.y),
@@ -53,25 +59,25 @@ public class CameraTest {
                         new Scalar(0, 255, 0),
                         2);
 
-                Mat crop = frame.submat(face);
+                // Face crop
+                Mat crop =
+                        frame.submat(face);
 
-                List<FaceLandmark> pts = landmarkDetector.detect(crop);
-                for (int i = 0; i < 10; i++) {
-                    System.out.println(
-                            i + " -> " +
-                                    pts.get(i).x + ", " +
-                                    pts.get(i).y);
-                }
+                List<FaceLandmark> pts =
+                        landmarkDetector.detect(crop);
 
+                // Draw landmarks
                 for (FaceLandmark p : pts) {
 
-                    int px = face.x +
-                            (int) (((p.x + 1.0f) / 2.0f)
-                                    * face.width);
+                    int px =
+                            face.x +
+                                    (int) (((p.x + 1.0f) / 2.0f)
+                                            * face.width);
 
-                    int py = face.y +
-                            (int) (((p.y + 1.0f) / 2.0f)
-                                    * face.height);
+                    int py =
+                            face.y +
+                                    (int) (((p.y + 1.0f) / 2.0f)
+                                            * face.height);
 
                     Imgproc.circle(
                             frame,
@@ -81,31 +87,70 @@ public class CameraTest {
                             -1);
                 }
 
-                FaceShape shape = FaceShapeClassifier
-                        .classify(pts);
+                // Face shape
+                FaceShape shape =
+                        FaceShapeClassifier.classify(pts);
 
+                // Hairstyle recommendations
+                List<String> styles =
+                        HairstyleRecommender.recommend(shape);
+
+                // Face shape text
                 Imgproc.putText(
                         frame,
-                        shape.name(),
+                        "Face Shape: " +
+                                shape.name(),
                         new Point(
                                 face.x,
-                                face.y - 10),
+                                Math.max(20,
+                                        face.y - 10)),
                         Imgproc.FONT_HERSHEY_SIMPLEX,
                         0.7,
                         new Scalar(0, 255, 0),
                         2);
+
+                // Hairstyles
+                int textY =
+                        face.y +
+                                face.height +
+                                25;
+
+                for (int i = 0;
+                     i < styles.size();
+                     i++) {
+
+                    Imgproc.putText(
+                            frame,
+                            (i + 1)
+                                    + ". "
+                                    + styles.get(i),
+                            new Point(
+                                    face.x,
+                                    textY),
+                            Imgproc.FONT_HERSHEY_SIMPLEX,
+                            0.5,
+                            new Scalar(
+                                    0,
+                                    255,
+                                    255),
+                            1);
+
+                    textY += 20;
+                }
             }
 
             HighGui.imshow(
                     "Face Shape Agent",
                     frame);
 
-            if (HighGui.waitKey(1) == 27) {
+            if (HighGui.waitKey(1)
+                    == 27) {
                 break;
             }
         }
 
         camera.release();
+
         HighGui.destroyAllWindows();
     }
 }

@@ -10,57 +10,51 @@ public class HairstyleRecommender {
         return switch(shape) {
 
             case OVAL -> List.of(
-                    "Buzz Cut",
-                    "Crew Cut",
+                    "Textured Quiff",
                     "Pompadour",
-                    "Quiff",
-                    "Side Part",
                     "French Crop",
-                    "Slick Back",
-                    "Curtains",
-                    "Undercut",
-                    "Textured Crop"
+                    "Side Part",
+                    "Slick Back"
             );
 
             case ROUND -> List.of(
-                    "Pompadour",
                     "High Fade",
-                    "Quiff",
-                    "Faux Hawk",
+                    "Pompadour",
                     "Spiky Hair",
-                    "Undercut",
-                    "Textured Top",
-                    "Side Sweep"
+                    "Faux Hawk",
+                    "Undercut"
             );
 
             case SQUARE -> List.of(
                     "Crew Cut",
                     "Buzz Cut",
-                    "Classic Taper",
-                    "Side Part",
                     "Ivy League",
+                    "Side Part",
                     "Textured Crop"
             );
 
             case HEART -> List.of(
-                    "Fringe",
+                    "Side Swept Fringe",
+                    "Textured Crop",
                     "Layered Medium",
-                    "Side Swept",
-                    "Textured Crop"
+                    "Messy Fringe",
+                    "Curtains"
             );
 
             case DIAMOND -> List.of(
                     "Curtains",
-                    "Textured Fringe",
                     "Medium Waves",
+                    "Textured Fringe",
+                    "Bro Flow",
                     "Side Part"
             );
 
             case OBLONG -> List.of(
-                    "Caesar Cut",
                     "Fringe",
+                    "Caesar Cut",
                     "Medium Length",
-                    "Textured Crop"
+                    "Textured Crop",
+                    "Side Fringe"
             );
         };
     }
